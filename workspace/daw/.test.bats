@@ -2,11 +2,11 @@ setup() {
   source /var/batslib/batslib.bash
 }
 
-add_remote() {
-  grep -r "remote" ./personal-website/.git/config
+check_commit() {
+  grep ".*" */.git/COMMIT_EDITMSG
 }
 
-@test "Check for the remote" {
-  run add_remote
-  [[ "$status" -eq 0 ]]
+@test "Check for git init" {
+  run check_commit
+  [ "$status" -eq 0 ]
 }
